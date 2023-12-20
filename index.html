@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>E-commerce API Documentation</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        margin: 20px;
+        color: #333;
+        background-color: #f8f8f8;
+      }
+
+      h1,
+      h2,
+      h3 {
+        color: #005580;
+      }
+
+      code {
+        background-color: #e6e6e6;
+        padding: 2px 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      pre {
+        background-color: #e6e6e6;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        overflow-x: auto;
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-bottom: 20px;
+      }
+
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: left;
+      }
+
+      th {
+        background-color: #005580;
+        color: #fff;
+      }
+
+      .intro,
+      .developer-info {
+        border-radius: 8px;
+        margin-bottom: 20px;
+      }
+
+      .intro {
+        background-color: #005580;
+        color: #fff;
+        padding: 20px;
+      }
+
+      .developer-info {
+        padding: 10px;
+        background-color: #fff;
+      }
+
+      @media screen and (max-width: 600px) {
+        h1,
+        h2,
+        h3 {
+          font-size: 1.5em;
+        }
+
+        pre {
+          font-size: 12px;
+        }
+
+        table {
+          font-size: 12px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="intro">
+      <h1>E-commerce API Documentation</h1>
+      <p>
+        This API powers an e-commerce platform, providing endpoints for both
+        admin dashboard functionalities and client interactions.
+      </p>
+      <p>Developed using Node.js, Express.js, and PostgreSQL.</p>
+    </div>
+
+    <h2>Endpoints</h2>
+
+    <h3>Admin Dashboard</h3>
+    <table>
+      <tr>
+        <th>Endpoint</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td><code>POST /api/v1/dashboard/admin/login</code></td>
+        <td>Admin login</td>
+      </tr>
+      <tr>
+        <td><code>GET /api/v1/dashboard/products</code></td>
+        <td>Get all products</td>
+      </tr>
+      <tr>
+        <td><code>GET /api/v1/dashboard/products/:id</code></td>
+        <td>Get a product by ID</td>
+      </tr>
+      <tr>
+        <td><code>POST /api/v1/dashboard/products/add</code></td>
+        <td>Add a new product</td>
+      </tr>
+      <tr>
+        <td><code>PUT /api/v1/dashboard/products/update/:id</code></td>
+        <td>Update a product by ID</td>
+      </tr>
+      <tr>
+        <td><code>DELETE /api/v1/dashboard/products/delete/:id</code></td>
+        <td>Delete a product by ID</td>
+      </tr>
+      <tr>
+        <td><code>POST /api/v1/dashboard/admin/register</code></td>
+        <td>Register a new admin</td>
+      </tr>
+      <tr>
+        <td><code>GET /api/v1/dashboard/orders/view</code></td>
+        <td>View all orders</td>
+      </tr>
+      <tr>
+        <td><code>POST /api/v1/dashboard/orders/changeStatus/:id</code></td>
+        <td>Change order status by ID</td>
+      </tr>
+    </table>
+
+    <h3>Client</h3>
+    <table>
+      <tr>
+        <th>Endpoint</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td><code>GET /api/v1/client/products</code></td>
+        <td>Get all products</td>
+      </tr>
+      <tr>
+        <td><code>GET /api/v1/client/products/:id</code></td>
+        <td>Get a product by ID</td>
+      </tr>
+      <tr>
+        <td><code>POST /api/v1/client/orders/add</code></td>
+        <td>Add a new order</td>
+      </tr>
+      <tr>
+        <td><code>POST /api/v1/client/register</code></td>
+        <td>Register a new client</td>
+      </tr>
+      <tr>
+        <td><code>POST /api/v1/client/login</code></td>
+        <td>Client login</td>
+      </tr>
+    </table>
+
+    <h2>Request Examples</h2>
+
+    <h3>Admin Dashboard</h3>
+
+    <h4>Admin Login</h4>
+    <h5>Use Token header for authentication </h5>
+    <h5>you can get a token by login to admin account </h5>
+    <pre>
+        <code>
+            POST /api/v1/dashboard/admin/login
+            {
+                "username": "admin",
+                "password": "admin123"
+            }
+        </code>
+    </pre>
+
+    <h4>Add Product</h4>
+    <pre>
+        <code>
+            POST /api/v1/dashboard/products/add
+            {
+                "id": "123",
+                "name": "Product Name",
+                "price": 20.99,
+                "discount": 5,
+                "image": "product-image.jpg",
+                "active": true
+            }
+        </code>
+    </pre>
+
+    <h4>Update Product</h4>
+    <pre>
+        <code>
+            PUT /api/v1/dashboard/products/update/123
+            {
+                "name": "Updated Product Name",
+                "price": 25.99,
+                "discount": 7,
+                "image": "updated-image.jpg",
+                "active": true
+            }
+        </code>
+    </pre>
+
+
+    <h3>Client</h3>
+
+    <h4>Client Login</h4>
+    <pre>
+        <code>
+            POST /api/v1/client/login
+            {
+                "username": "user",
+                "password": "user123"
+            }
+        </code>
+    </pre>
+
+    <h4>Add Order</h4>
+    <pre>
+        <code>
+            POST /api/v1/client/orders/add
+            {
+                "items": ["product1", "product2"],
+                "userID": "user123",
+                "address": "123 Street, City",
+                "status": "pending"
+            }
+        </code>
+    </pre>
+
+
+    <div class="developer-info">
+      <h2>About the Developer</h2>
+      <p>This API was developed by salam adil.</p>
+      <p>For inquiries, please contact sllaim3333@gmail.com.</p>
+    </div>
+  </body>
+</html>
