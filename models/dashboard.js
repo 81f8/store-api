@@ -22,14 +22,14 @@ async function login(req, res) {
 }
 
 async function getProducts(req, res) {
-  const { search, filter, page, pageSize = 10, minPrice, maxPrice } = req.query;
+  const { search, category, page, pageSize = 10, minPrice, maxPrice } = req.query;
 
   let whereClause = "WHERE active = true";
   if (search) {
     whereClause += ` AND (name ILIKE '%${search}%')`;
   }
   if (filter) {
-    whereClause += ` AND category = '${filter}'`;
+    whereClause += ` AND category = '${category}'`;
   }
   if (minPrice) {
     whereClause += ` AND price >= ${minPrice}`;
